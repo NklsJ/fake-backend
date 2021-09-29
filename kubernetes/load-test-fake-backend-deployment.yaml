@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-test-fake-backend-deployment
+  labels:
+    app: load-test-fake-backend
+spec:
+  replicas: [REPLICAS]
+  selector:
+    matchLabels:
+      app: load-test-fake-backend
+  template:
+    metadata:
+      labels:
+        app: load-test-fake-backend
+    spec:
+      containers:
+      - name: load-test-fake-backend
+        image: [TARGET_IMAGE]
+        ports:
+        - containerPort: 4000
